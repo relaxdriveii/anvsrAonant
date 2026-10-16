@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy 5th Month Anniversary 🐶💖🐷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ff8fb8; --pink-d:#ff5f9e; --pink-dd:#d9457f; --pink-l:#ffe3ee; --cream:#fff7fa; --text:#7a3a57;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{
+  font-family:'Mali','Sarabun','Noto Sans Thai',sans-serif; color:var(--text);
+  background:linear-gradient(160deg,#ffe3ee 0%,#ffc6dc 55%,#ffb0cf 100%) fixed;
+  overflow-x:hidden; line-height:1.55;
+}
+#bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#bg span{position:absolute;bottom:-60px;opacity:.55;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-115vh) rotate(40deg)}}
+
+.screen{display:none;position:relative;z-index:1;width:100%;max-width:520px;margin:0 auto;padding:70px 18px 40px;text-align:center;min-height:100vh}
+.screen.active{display:block;animation:fadeIn .5s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+h1,h2,h3{margin:.2em 0}
+.big-emoji{font-size:54px;letter-spacing:6px}
+.title{font-size:28px;font-weight:700;color:var(--pink-dd);text-shadow:0 2px 0 #fff}
+.sub{font-size:16px;opacity:.9}
+
+.btn{
+  font-family:inherit;background:linear-gradient(#ff9cc4,#ff6aa5);color:#fff;border:0;padding:14px 26px;border-radius:999px;
+  font-size:18px;font-weight:700;cursor:pointer;margin:14px 0;
+  box-shadow:0 6px 0 var(--pink-dd),0 12px 20px rgba(255,95,158,.35);transition:transform .08s, box-shadow .08s, filter .2s;
+}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--pink-dd),0 4px 8px rgba(255,95,158,.3)}
+.btn:disabled{filter:grayscale(.7) brightness(1.1);cursor:not-allowed}
+.btn.big{font-size:20px;padding:16px 28px}
+.fadeBtn{opacity:0;pointer-events:none;transition:opacity 1.2s ease}
+.fadeBtn.show{opacity:1;pointer-events:auto}
+
+.card{background:rgba(255,255,255,.88);border-radius:26px;padding:22px 18px;box-shadow:0 10px 30px rgba(217,69,127,.2);border:3px solid #fff}
+
+/* top bars */
+#muteBtn{position:fixed;top:12px;right:12px;z-index:60;width:42px;height:42px;border-radius:50%;border:3px solid #fff;background:var(--pink);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 4px 10px rgba(217,69,127,.3)}
+#coinBar{position:fixed;top:12px;left:12px;z-index:60;background:#fff;border:3px solid var(--pink);border-radius:999px;padding:4px 14px;font-weight:700;font-size:18px;display:none;box-shadow:0 4px 10px rgba(217,69,127,.25)}
+#coinBar.on{display:block}
+#coinBar.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.35)}}
+
+/* quiz */
+.progress{height:12px;background:#fff;border-radius:99px;overflow:hidden;border:2px solid #fff;margin:6px 0 16px;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff9cc4,#ff5f9e);transition:width .5s}
+.q-text{font-size:21px;font-weight:700;margin:6px 0 18px;color:var(--pink-dd)}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{font-family:inherit;display:flex;align-items:center;gap:12px;text-align:left;width:100%;padding:13px 14px;font-size:17px;color:var(--text);background:#fff;border:3px solid var(--pink-l);border-radius:18px;cursor:pointer;transition:transform .12s, background .2s, border-color .2s;box-shadow:0 4px 0 var(--pink-l)}
+.opt i{font-style:normal;flex:none;width:32px;height:32px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-weight:700}
+.opt:hover:not(:disabled){transform:translateY(-2px);border-color:var(--pink)}
+.opt.right{background:#d9f9e3;border-color:#4cc77a;box-shadow:0 4px 0 #4cc77a;animation:bump .5s}
+.opt.wrong{background:#ffe0e6;border-color:#ff7b95;box-shadow:0 4px 0 #ff7b95;animation:shake .4s;opacity:.7}
+.opt:disabled{cursor:default}
+@keyframes shake{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-5px)}}
+.q-msg{min-height:28px;margin-top:14px;font-weight:700}
+
+/* gachapon */
+.coinRow{font-size:26px;margin:4px 0 10px}
+.coinRow span{display:inline-block;margin:0 2px;transition:.4s}
+.coinRow span.used{filter:grayscale(1);opacity:.35;transform:scale(.8)}
+.machine{position:relative;width:270px;margin:6px auto 0}
+.machine.rattle{animation:rattle .12s infinite}
+@keyframes rattle{0%{transform:translate(0,0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,-1px)}100%{transform:translate(1px,1px)}}
+.m-top{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin-bottom:-10px;position:relative;z-index:3}
+.pet{font-size:44px;filter:drop-shadow(0 3px 0 rgba(0,0,0,.08))}
+.sign{background:#fff;color:var(--pink-d);font-weight:700;padding:5px 12px;border-radius:14px;border:3px solid var(--pink-d);font-size:14px;margin-bottom:4px}
+.dome{width:230px;height:230px;margin:0 auto;border-radius:50%;position:relative;overflow:hidden;z-index:2;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.95),rgba(255,255,255,.4) 40%,rgba(200,230,255,.4));
+  border:6px solid #fff;box-shadow:inset 0 -10px 30px rgba(255,120,170,.25),0 0 0 4px rgba(255,143,184,.55)}
+.ball{position:absolute;width:44px;height:44px;border-radius:50%;background:linear-gradient(180deg,var(--c) 50%,#fff 50%);border:2px solid rgba(255,255,255,.9);box-shadow:inset -4px -5px 0 rgba(0,0,0,.07)}
+.ball::after{content:"";position:absolute;left:8px;top:6px;width:10px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);transform:rotate(-30deg)}
+.dome.shake .ball{animation:jig .16s infinite alternate;animation-delay:calc(var(--d)*1ms)}
+@keyframes jig{from{transform:translate(-5px,-10px) rotate(-14deg)}to{transform:translate(5px,7px) rotate(14deg)}}
+.glare{position:absolute;left:24px;top:18px;width:60px;height:30px;border-radius:50%;background:rgba(255,255,255,.55);transform:rotate(-30deg);pointer-events:none}
+.m-body{width:270px;margin-top:-34px;padding:48px 18px 18px;background:linear-gradient(#ff8fb8,#ff6aa5);border-radius:30px 30px 20px 20px;position:relative;z-index:1;
+  box-shadow:inset 0 4px 0 rgba(255,255,255,.4),0 10px 0 var(--pink-dd),0 24px 30px rgba(180,40,100,.3)}
+.panel{display:flex;justify-content:space-around;align-items:center;margin-bottom:16px}
+.slot{width:62px;height:80px;background:#fff;border-radius:14px;position:relative;box-shadow:inset 0 -4px 0 #ffd0e3;display:grid;place-items:center}
+.slot::before{content:"";width:9px;height:38px;border-radius:6px;background:#5a2340}
+.slot::after{content:"INSERT";position:absolute;bottom:4px;font-size:8px;font-weight:700;color:var(--pink-d);letter-spacing:1px}
+.coin-drop{position:absolute;top:-34px;left:50%;margin-left:-15px;font-size:30px;opacity:0;z-index:5}
+.coin-drop.go{animation:coinIn .7s ease-in forwards}
+@keyframes coinIn{0%{opacity:1;transform:translateY(-6px) rotate(0)}70%{opacity:1;transform:translateY(34px) rotate(540deg)}100%{opacity:0;transform:translateY(40px) scale(.5)}}
+.knob{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#ffe1ee 60%,#ffb3d0);border:5px solid #fff;box-shadow:0 5px 0 var(--pink-dd);display:grid;place-items:center;cursor:pointer;padding:0}
+.knob span{display:block;width:10px;height:58px;border-radius:6px;background:var(--pink-d)}
+.knob.turn{animation:turn 1.5s ease-in-out}
+@keyframes turn{to{transform:rotate(720deg)}}
+.outlet{width:150px;height:72px;margin:0 auto;background:#5a2340;border-radius:14px 14px 22px 22px;box-shadow:inset 0 8px 14px rgba(0,0,0,.55);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.drop-ball{width:52px;height:52px;border-radius:50%;margin-bottom:6px;opacity:0;background:linear-gradient(180deg,var(--c,#ff8fb8) 50%,#fff 50%);border:2px solid #fff}
+.drop-ball.fall{animation:ballFall .9s cubic-bezier(.3,1.4,.6,1) forwards}
+@keyframes ballFall{0%{opacity:1;transform:translateY(-90px)}100%{opacity:1;transform:translateY(0)}}
+.base{width:290px;height:16px;margin:10px auto 0;background:var(--pink-dd);border-radius:10px;box-shadow:0 6px 12px rgba(0,0,0,.15)}
+.shelf{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.shelf div{width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.6);border:3px dashed var(--pink);display:grid;place-items:center;font-size:24px;color:var(--pink)}
+.shelf div.done{background:#fff;border:3px solid var(--pink-d);animation:bump .6s}
+
+/* reveal overlay */
+#reveal{position:fixed;inset:0;z-index:80;display:none;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,#fff0f6,#ffc2da);gap:30px;font-weight:700;color:var(--pink-dd)}
+#reveal.on{display:flex}
+.cap{width:150px;height:150px;position:relative}
+.cap.wobble{animation:wob .9s ease-in-out}
+@keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg) scale(1.05)}40%{transform:rotate(12deg) scale(1.08)}60%{transform:rotate(-9deg)}80%{transform:rotate(6deg)}}
+.cap-top,.cap-bot{position:absolute;left:0;width:150px;height:75px;transition:transform .7s ease, opacity .7s ease}
+.cap-top{top:0;border-radius:75px 75px 0 0;background:var(--c,#ff8fb8);box-shadow:inset 0 10px 0 rgba(255,255,255,.3)}
+.cap-bot{top:75px;border-radius:0 0 75px 75px;background:#fff;box-shadow:inset 0 -8px 0 rgba(0,0,0,.05)}
+.cap.open .cap-top{transform:translate(-60px,-120px) rotate(-35deg);opacity:0}
+.cap.open .cap-bot{transform:translate(50px,120px) rotate(25deg);opacity:0}
+.cap-glow{position:absolute;inset:0;display:grid;place-items:center;font-size:70px;opacity:0;transform:scale(.2);transition:.6s}
+.cap.open .cap-glow{opacity:1;transform:scale(1.6)}
+
+.conf{position:fixed;z-index:90;pointer-events:none;animation:conf 1.7s ease-out forwards}
+@keyframes conf{0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}55%{opacity:1;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--rot))}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy) + 55vh)) rotate(var(--rot))}}
+
+/* gifts */
+.badge{display:inline-block;background:#fff;color:var(--pink-dd);font-weight:700;padding:6px 18px;border-radius:99px;border:3px solid var(--pink);margin-bottom:14px}
+.gift-card{animation:popIn .6s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes popIn{from{opacity:0;transform:scale(.5) rotate(-6deg)}to{opacity:1;transform:none}}
+.hint{font-size:15px;color:var(--pink-dd);font-weight:600}
+
+.ticket{display:flex;background:#fff;border-radius:20px;overflow:hidden;border:3px solid var(--pink-d);box-shadow:0 10px 24px rgba(217,69,127,.3);text-align:left;position:relative}
+.ticket .t-left{flex:none;width:96px;background:linear-gradient(#ff9cc4,#ff5f9e);display:grid;place-items:center;font-size:48px;border-right:3px dashed #fff}
+.ticket .t-main{padding:16px 14px}
+.ticket small{letter-spacing:2px;color:var(--pink-d);font-weight:700;font-size:11px}
+.ticket h3{font-size:22px;color:var(--pink-dd)}
+.ticket p{margin:6px 0 0;font-size:14px}
+.kiss-card{cursor:pointer;user-select:none}
+.kiss-card .t-left{font-size:44px}
+
+/* camera */
+.cam-stage{position:relative;height:350px;max-width:340px;margin:0 auto}
+.camera{position:absolute;left:50%;top:0;margin-left:-105px;width:210px;height:160px;background:linear-gradient(#ff8fb8,#ff5f9e);border-radius:24px;z-index:10;cursor:pointer;box-shadow:inset 0 5px 0 rgba(255,255,255,.4),0 8px 0 var(--pink-dd),0 16px 24px rgba(180,40,100,.3);transition:transform .08s;-webkit-user-select:none;user-select:none}
+.camera:active{transform:scale(.97)}
+.camera.empty{filter:grayscale(.6);cursor:default}
+.c-top{position:absolute;left:0;right:0;top:0;height:42px;background:#fff;border-radius:24px 24px 0 0;border-bottom:4px solid var(--pink-l)}
+.c-flash{position:absolute;left:18px;top:9px;width:50px;height:24px;border-radius:6px;background:linear-gradient(135deg,#fffbe0,#ffe58a);border:2px solid #f2c94c}
+.c-btn{position:absolute;right:20px;top:8px;width:26px;height:26px;border-radius:50%;background:var(--pink-d);box-shadow:0 3px 0 var(--pink-dd)}
+.c-lens{position:absolute;left:50%;top:62px;width:92px;height:92px;margin-left:-46px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.c-lens-in{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#8fb8ff 0,#35456b 28%,#1c2340 70%);border:4px solid #ffd0e3;position:relative}
+.c-lens-in::after{content:"";position:absolute;left:14px;top:12px;width:14px;height:9px;border-radius:50%;background:rgba(255,255,255,.7);transform:rotate(-30deg)}
+.c-slot{position:absolute;left:50%;bottom:6px;width:130px;height:9px;margin-left:-65px;border-radius:5px;background:#5a2340}
+.camera.flash .c-flash{animation:fl .35s}
+@keyframes fl{50%{background:#fff;box-shadow:0 0 30px 14px #fff}}
+.screen-flash{position:fixed;inset:0;background:#fff;z-index:95;pointer-events:none;animation:sf .45s ease-out forwards}
+@keyframes sf{0%{opacity:.9}100%{opacity:0}}
+.polaroid{position:absolute;left:50%;top:15px;width:116px;margin-left:-58px;background:#fff;padding:7px 7px 26px;border-radius:4px;box-shadow:0 6px 14px rgba(0,0,0,.25);z-index:1;animation:slideOut 1.7s ease forwards;font-size:12px;color:var(--text)}
+@keyframes slideOut{
+  0%{transform:translate(0,0) rotate(0)}
+  55%{transform:translate(0,170px) rotate(0)}
+  100%{transform:translate(var(--tx),var(--ty)) rotate(var(--rot))}
+}
+.polaroid .cap-t{position:absolute;left:0;right:0;bottom:4px;font-size:13px;text-align:center;font-weight:600}
+.polaroid .imgbox{width:100%;height:100px;filter:brightness(.15) saturate(0) blur(3px);animation:develop 4s ease forwards 1.5s}
+@keyframes develop{to{filter:none}}
+.imgbox{position:relative;overflow:hidden;background:linear-gradient(135deg,#ffd1e3,#ffb3d0);border-radius:3px;display:grid;place-items:center}
+.imgbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.imgbox.noimg span{font-size:38px}
+.imgbox.noimg small{position:absolute;bottom:3px;font-size:10px;opacity:.7}
+
+/* wish */
+.wish textarea{width:100%;min-height:130px;border-radius:18px;border:3px solid var(--pink);padding:12px;font-family:inherit;font-size:16px;color:var(--text);resize:vertical;outline:none;background:#fffafc}
+.wish textarea:focus{border-color:var(--pink-d);box-shadow:0 0 0 4px rgba(255,95,158,.2)}
+.wish-msg{font-weight:700;min-height:26px}
+
+/* letter */
+.letter-scroll{height:min(58vh,470px);overflow-y:auto;text-align:left;background:#fffdf8;background-image:repeating-linear-gradient(transparent 0 31px,#ffe3ee 31px 32px);border:3px dashed var(--pink);border-radius:20px;padding:18px 16px 26px;font-size:17px;line-height:32px;box-shadow:inset 0 0 18px rgba(255,143,184,.15)}
+.letter-scroll::-webkit-scrollbar{width:12px}
+.letter-scroll::-webkit-scrollbar-track{background:var(--pink-l);border-radius:10px}
+.letter-scroll::-webkit-scrollbar-thumb{background:var(--pink-d);border-radius:10px;border:2px solid var(--pink-l)}
+.letter-scroll h3{text-align:center;color:var(--pink-dd);line-height:1.4;margin-bottom:8px}
+.letter-scroll p{margin:0 0 14px;text-indent:1.5em}
+.letter-fig{margin:6px auto 18px;width:78%;background:#fff;padding:8px 8px 22px;border-radius:4px;box-shadow:0 6px 14px rgba(0,0,0,.18);transform:rotate(var(--r,-2deg));line-height:1.2}
+.letter-fig .imgbox{aspect-ratio:4/3}
+.letter-fig figcaption{text-align:center;font-size:13px;margin-top:6px}
+.scroll-hint{font-weight:700;color:var(--pink-dd);margin:10px 0 0;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+
+/* final */
+.script{font-family:'Pacifico','Mali',cursive;font-size:38px;color:#fff;text-shadow:0 3px 0 var(--pink-d),0 8px 18px rgba(217,69,127,.5);margin:6px 0}
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;margin:18px 0;border-radius:22px;padding:8px;background:linear-gradient(135deg,#fff,#ffd0e3,#fff);border:4px solid var(--pink-d);box-shadow:0 0 0 6px rgba(255,255,255,.7),0 14px 30px rgba(217,69,127,.4)}
+.video-frame iframe{width:100%;height:100%;border:0;border-radius:14px;background:#000}
+.video-frame::before,.video-frame::after{content:"💖";position:absolute;font-size:30px;animation:bump 2s infinite}
+.video-frame::before{left:-14px;top:-18px}
+.video-frame::after{right:-14px;bottom:-18px;animation-delay:1s}
+.signature{font-weight:700;color:var(--pink-dd);font-size:18px}
+.link-btn{background:none;border:0;font-family:inherit;color:var(--pink-dd);text-decoration:underline;cursor:pointer;font-size:14px;margin-top:8px}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<button id="muteBtn" data-nopop="1" aria-label="เปิด/ปิดเสียง">🔊</button>
+<div id="coinBar">🪙 <span id="coinCount">0</span></div>
+
+<!-- INTRO -->
+<section id="intro" class="screen active">
+  <div class="big-emoji">🐶💖🐷</div>
+  <h1 class="title" style="font-size:32px">Happy 5th Month<br>Anniversary!</h1>
+  <p class="sub">สุขสันต์วันครบรอบนะคะ อ้อนแอ้น<br>ตอบคำถาม 5 ข้อ เก็บเหรียญให้ครบ<br>แล้วไปหมุนตู้กาชาปองด้วยกันน้า 🪙</p>
+  <button class="btn big" id="startBtn">เริ่มเลย ✨</button>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="screen">
+  <div class="card">
+    <div class="hint" id="qNo">ข้อ 1 / 5</div>
+    <div class="progress"><i id="qBar"></i></div>
+    <div class="q-text" id="qText"></div>
+    <div class="opts" id="opts"></div>
+    <div class="q-msg" id="qMsg"></div>
+  </div>
+</section>
+
+<!-- QUIZ DONE -->
+<section id="quizDone" class="screen">
+  <div class="big-emoji">🎉🪙🎉</div>
+  <h2 class="title">เก็บเหรียญครบ 5 เหรียญแล้ว!</h2>
+  <p class="sub">เก่งมากเลยค่ะ อ้อนแอ้น 🐷<br>ไปหยอดตู้กาชาปองกันเลย</p>
+  <button class="btn big" id="toGacha">ไปที่ตู้กาชาปอง 🎰</button>
+</section>
+
+<!-- GACHA -->
+<section id="gacha" class="screen">
+  <h2 class="title">ตู้กาชาปองหมูหมา</h2>
+  <div class="hint">เหรียญที่เหลือ: <b id="gCoins">5</b> เหรียญ</div>
+  <div class="coinRow" id="coinRow"></div>
+  <div class="machine" id="machine">
+    <div class="m-top"><span class="pet">🐶</span><div class="sign">Dog &amp; Pig Gacha</div><span class="pet">🐷</span></div>
+    <div class="dome" id="dome"><div id="balls"></div><div class="glare"></div></div>
+    <div class="m-body">
+      <div class="panel">
+        <div class="slot"><div class="coin-drop" id="coinDrop">🪙</div></div>
+        <button class="knob" id="knob" aria-label="หมุนกาชาปอง"><span></span></button>
+      </div>
+      <div class="outlet"><div class="drop-ball" id="dropBall"></div></div>
+    </div>
+    <div class="base"></div>
+  </div>
+  <button class="btn big" id="spinBtn">🪙 หยอดเหรียญ / หมุนกาชาปอง</button>
+  <div class="shelf" id="shelf"></div>
+</section>
+
+<!-- REVEAL OVERLAY -->
+<div id="reveal">
+  <div class="cap" id="cap"><div class="cap-top"></div><div class="cap-bot"></div><div class="cap-glow">🎁</div></div>
+  <div>กำลังเปิดลูกบอล…</div>
+</div>
+
+<!-- GIFT -->
+<section id="gift" class="screen">
+  <div class="badge">ของขวัญชิ้นที่ <b id="giftNo">1</b> / 5</div>
+  <div class="gift-card" id="giftCard"></div>
+  <button id="nextBtn" class="btn fadeBtn">กลับไปหน้าตู้ ➜</button>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="screen">
+  <div class="big-emoji">🐶🤍🐷</div>
+  <h1 class="script">Song for you babe</h1>
+  <p class="sub" style="font-size:18px;font-weight:600">ตั้งใจฟังนะคะ อั่ยหมูจิ๋ว🐽🤍</p>
+  <div class="video-frame">
+    <iframe id="ytFrame" data-src="https://www.youtube.com/embed/QwZr4Avwobk" title="Song for you babe"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="signature">🐶 โนลด์ &amp; อ้อนแอ้น 🐷<br>Happy 5th Month Anniversary 💖</p>
+  <button class="link-btn" id="restartBtn">🔁 เล่นอีกครั้ง</button>
+</section>
+
+<script>
+/* ============ ตั้งค่าส่งอีเมลคำขอพร ============
+   วิธีที่ 1 (ง่ายสุด) Web3Forms: ไปที่ https://web3forms.com ใส่อีเมล relaxdriveii@gmail.com
+                       แล้วนำ Access Key ที่ได้ มาวางในช่อง WEB3FORMS_ACCESS_KEY
+   วิธีที่ 2 EmailJS: สมัคร https://www.emailjs.com แล้วใส่ PUBLIC_KEY / SERVICE_ID / TEMPLATE_ID
+                       (ใน Template ใช้ตัวแปร {{message}} {{subject}} {{to_email}})
+   ถ้ายังไม่ได้ใส่ทั้งสองแบบ ระบบจะเปิดแอปอีเมลของเครื่องให้ส่งแทน (mailto) */
+const CONFIG = {
+  EMAIL_TO: "relaxdriveii@gmail.com",
+  WEB3FORMS_ACCESS_KEY: "",
+  EMAILJS: { PUBLIC_KEY: "", SERVICE_ID: "", TEMPLATE_ID: "" },
+  // true = ปุ่มถัดไปของ "กล้องโพลารอยด์" และ "ขอพร" จะโผล่หลังทำกิจกรรมเสร็จ (+3 วิ)
+  // false = โผล่หลังเปิดของขวัญ 3 วิ ทุกชิ้น
+  GATE_INTERACTIVE_GIFTS: true,
+};
+
+const $ = s => document.querySelector(s);
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const rand = (a, b) => a + Math.random() * (b - a);
+
+/* ============ พื้นหลังลอย ============ */
+(function(){
+  const em = ['💖','🐾','🐷','🐶','🌸','✨','💗','🎀'];
+  const bg = $('#bg');
+  for (let i = 0; i < 20; i++) {
+    const s = document.createElement('span');
+    s.textContent = em[i % em.length];
+    s.style.left = rand(0, 98) + '%';
+    s.style.fontSize = rand(18, 40) + 'px';
+    s.style.animationDuration = rand(12, 26) + 's';
+    s.style.animationDelay = (-rand(0, 26)) + 's';
+    bg.appendChild(s);
+  }
+})();
+
+/* ============ เสียง (สังเคราะห์ด้วย WebAudio ไม่ต้องใช้ไฟล์) ============ */
+let ac = null, muted = false;
+function ctx(){
+  if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){} }
+  if (ac && ac.state === 'suspended') ac.resume();
+  return ac;
+}
+function tone(freq, t0, dur, type = 'sine', vol = .2, freqEnd){
+  const a = ctx(); if (!a || muted) return;
+  const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + t0;
+  o.type = type; o.frequency.setValueAtTime(freq, t);
+  if (freqEnd) o.frequency.exponentialRampToValueAtTime(freqEnd, t + dur);
+  g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + .03);
+}
+function noise(t0, dur, vol, hp){
+  const a = ctx(); if (!a || muted) return;
+  const len = Math.max(1, Math.floor(a.sampleRate * dur));
+  const buf = a.createBuffer(1, len, a.sampleRate), d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+  const src = a.createBufferSource(); src.buffer = buf;
+  const f = a.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = hp;
+  const g = a.createGain(); g.gain.value = vol;
+  src.connect(f).connect(g).connect(a.destination); src.start(a.currentTime + t0);
+}
+const sfx = {
+  pop(){ tone(520, 0, .12, 'sine', .28, 980); tone(1400, .02, .06, 'triangle', .07); },
+  coin(){ tone(988, 0, .09, 'square', .07); tone(1319, .08, .28, 'square', .07); },
+  wrong(){ tone(240, 0, .28, 'sawtooth', .09, 140); },
+  rattle(){ for (let i = 0; i < 12; i++) { noise(i * .12, .06, .25, 900); tone(300 + (i % 3) * 80, i * .12, .05, 'square', .04); } },
+  drop(){ tone(320, 0, .2, 'sine', .25, 120); tone(220, .28, .1, 'sine', .2, 110); },
+  tada(){ [523, 659, 784, 1047].forEach((f, i) => tone(f, i * .1, .4, 'triangle', .2)); },
+  shutter(){ noise(0, .04, .55, 2000); tone(150, 0, .06, 'square', .15, 60); noise(.09, .05, .45, 1500); tone(110, .09, .08, 'square', .12, 50); },
+};
+document.addEventListener('click', e => {
+  const b = e.target.closest('button, .opt');
+  if (b && !b.dataset.nopop && !b.disabled) sfx.pop();
+}, true);
+$('#muteBtn').onclick = () => { muted = !muted; $('#muteBtn').textContent = muted ? '🔇' : '🔊'; if (!muted) sfx.pop(); };
+
+/* ============ ตัวช่วย ============ */
+function confetti(n = 40){
+  const em = ['💖','🌸','✨','🐾','💗','🎀'];
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement('span');
+    s.className = 'conf'; s.textContent = em[Math.floor(Math.random() * em.length)];
+    s.style.left = '50%'; s.style.top = '45%';
+    s.style.setProperty('--dx', rand(-45, 45) + 'vw');
+    s.style.setProperty('--dy', rand(-45, -5) + 'vh');
+    s.style.setProperty('--rot', rand(-360, 360) + 'deg');
+    s.style.fontSize = rand(16, 34) + 'px';
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1800);
+  }
+}
+function imgBox(src, emoji, cls = ''){
+  const d = document.createElement('div'); d.className = 'imgbox ' + cls;
+  const im = new Image(); im.alt = '';
+  im.onerror = () => { im.remove(); d.classList.add('noimg'); d.innerHTML = `<span>${emoji}</span><small>${src}</small>`; };
+  im.src = src; d.appendChild(im); return d;
+}
+const screens = document.querySelectorAll('.screen');
+function show(id){
+  screens.forEach(s => s.classList.toggle('active', s.id === id));
+  $('#coinBar').classList.toggle('on', ['quiz', 'quizDone', 'gacha'].includes(id));
+  window.scrollTo(0, 0);
+}
+let coins = 0;
+function updateCoins(bump){
+  $('#coinCount').textContent = coins;
+  $('#gCoins').textContent = coins;
+  const bar = $('#coinBar');
+  if (bump) { bar.classList.remove('bump'); void bar.offsetWidth; bar.classList.add('bump'); }
+  document.querySelectorAll('#coinRow span').forEach((s, i) => s.classList.toggle('used', i >= coins));
+}
+
+/* ============ QUIZ ============ */
+const QUIZ = [
+  { q: 'วันครบรอบของเราตรงกับวันที่เท่าไหร่', o: ['14', '16', '18'], a: 1 },
+  { q: 'อ้อนแอ้นหน้าเหมือนสัตว์อะไร', o: ['จระเข้', 'ไดโนเสาร์', 'หมู'], a: 2 },
+  { q: 'หนังเรื่องแรกที่เราไปดูด้วยกัน คือเรื่องอะไร', o: ['ธี่หยด สมิงเขากวาง', 'คำสารภาพของหมอผี', 'หอแต๋วแตก แหกสัปปะหยด'], a: 1 },
+  { q: 'ตุ๊กตาหมูที่โนลด์ให้อ้อนแอ้น เราตั้งชื่อว่าอะไร', o: ['อิ่มใจ', 'อุ่นใจ', 'อุ่นจู๋'], a: 0 },
+  { q: 'ตุ๊กตาหมาที่อ้อนแอ้นให้โนลด์ เราตั้งชื่อให้ว่าอะไร และพันธุ์อะไร', o: ['ชื่อแม็ค พันธุ์ดัลเมเชี่ยน', 'ชื่ออุ่นใจ พันธุ์หลังอานลายจุด', 'ชื่ออุ่นใจ พันธุ์ดัลเมเชี่ยน'], a: 2 },
+];
+let qi = 0, locked = false;
+function renderQ(){
+  const d = QUIZ[qi];
+  $('#qNo').textContent = `ข้อ ${qi + 1} / ${QUIZ.length}`;
+  $('#qBar').style.width = (qi / QUIZ.length * 100) + '%';
+  $('#qText').textContent = d.q; $('#qMsg').textContent = '';
+  const box = $('#opts'); box.innerHTML = '';
+  d.o.forEach((t, i) => {
+    const b = document.createElement('button'); b.className = 'opt';
+    b.innerHTML = `<i>${'ABC'[i]}</i><span></span>`; b.lastChild.textContent = t;
+    b.onclick = () => pick(b, i); box.appendChild(b);
+  });
+}
+function pick(b, i){
+  if (locked) return;
+  const d = QUIZ[qi];
+  if (i === d.a) {
+    locked = true; b.classList.add('right');
+    document.querySelectorAll('.opt').forEach(x => x.disabled = true);
+    setTimeout(sfx.coin, 150);
+    coins++; updateCoins(true);
+    $('#qMsg').textContent = '🎉 ถูกต้อง! ได้รับเหรียญ 🪙 +1';
+    $('#qBar').style.width = ((qi + 1) / QUIZ.length * 100) + '%';
+    setTimeout(() => { qi++; locked = false; qi < QUIZ.length ? renderQ() : show('quizDone'); }, 1400);
+  } else {
+    b.classList.add('wrong'); b.disabled = true; sfx.wrong();
+    $('#qMsg').textContent = '🐷 อุ๊ปส์ ลองใหม่อีกครั้งนะคะ';
+  }
+}
+$('#startBtn').onclick = () => { coins = 0; qi = 0; updateCoins(); renderQ(); show('quiz'); };
+$('#toGacha').onclick = () => { enterGacha(); };
+
+/* ============ GACHAPON ============ */
+const BALL_COLORS = ['#ff8fb8', '#ffb86b', '#7fd6c2', '#b79bff', '#ff6b8e'];
+const GIFT_ICONS = ['🍜', '📸', '😘', '🌠', '💌'];
+let opened = 0, busy = false;
+
+(function buildBalls(){
+  const cols = ['#ff8fb8', '#ffb86b', '#7fd6c2', '#b79bff', '#ff6b8e', '#7fc4ff', '#ffd95e'];
+  const wrap = $('#balls');
+  for (let i = 0; i < 17; i++) {
+    const b = document.createElement('div'); b.className = 'ball';
+    b.style.setProperty('--c', cols[i % cols.length]);
+    b.style.setProperty('--d', Math.floor(rand(0, 160)));
+    b.style.left = rand(6, 170) + 'px'; b.style.top = rand(70, 172) + 'px';
+    wrap.appendChild(b);
+  }
+})();
+
+function enterGacha(){
+  $('#coinRow').innerHTML = Array.from({ length: 5 }, () => '<span>🪙</span>').join('');
+  renderShelf(); updateCoins(); show('gacha');
+  $('#spinBtn').disabled = coins <= 0;
+}
+function renderShelf(){
+  $('#shelf').innerHTML = GIFT_ICONS.map((ic, i) => i < opened ? `<div class="done">${ic}</div>` : '<div>❔</div>').join('');
+}
+async function spin(){
+  if (busy || coins <= 0) return;
+  busy = true; $('#spinBtn').disabled = true;
+  const color = BALL_COLORS[opened];
+  const cd = $('#coinDrop'), knob = $('#knob'), dome = $('#dome'), mach = $('#machine'), db = $('#dropBall');
+  // 1) หยอดเหรียญ
+  cd.classList.remove('go'); void cd.offsetWidth; cd.classList.add('go'); sfx.coin();
+  await wait(750);
+  coins--; updateCoins(true);
+  // 2) หมุน + ลูกบอลเขย่า
+  knob.classList.add('turn'); dome.classList.add('shake'); mach.classList.add('rattle'); sfx.rattle();
+  await wait(1500);
+  knob.classList.remove('turn'); dome.classList.remove('shake'); mach.classList.remove('rattle');
+  // 3) ลูกบอลหล่นลงช่อง
+  db.style.setProperty('--c', color); db.classList.add('fall'); sfx.drop();
+  await wait(1100);
+  // 4) เปิดลูกบอล
+  const rv = $('#reveal'), cap = $('#cap');
+  rv.style.setProperty('--c', color); cap.style.setProperty('--c', color);
+  cap.classList.remove('open', 'wobble'); rv.classList.add('on');
+  void cap.offsetWidth; cap.classList.add('wobble');
+  await wait(1000);
+  cap.classList.add('open'); sfx.tada(); confetti(45);
+  await wait(1100);
+  rv.classList.remove('on'); cap.classList.remove('open', 'wobble');
+  cd.classList.remove('go'); db.classList.remove('fall'); db.style.opacity = 0;
+  showGift(opened);
+  busy = false;
+}
+$('#spinBtn').onclick = spin;
+$('#knob').onclick = spin;
+
+/* ============ GIFTS ============ */
+const nextBtn = $('#nextBtn');
+let nextTimer = null;
+function unlockNext(delay = 3000){
+  clearTimeout(nextTimer);
+  nextTimer = setTimeout(() => nextBtn.classList.add('show'), delay);
+}
+const gifts = [
+  { // 1 บัตรพาไปกินเตี๋ยว
+    build(card){
+      card.innerHTML = `<div class="ticket"><div class="t-left">🍜</div><div class="t-main">
+        <small>GIFT TICKET</small><h3>บัตรพาไปกินเตี๋ยว</h3>
+        <p>โนลด์พาไปเอง เลือกร้านได้เลยนะคะ 🐷🍜</p></div></div>`;
+    }
+  },
+  { // 2 กล้องโพลารอยด์
+    custom: true,
+    build(card){
+      card.innerHTML = `<h3 class="title" style="font-size:24px">กล้องโพลารอยด์ 📸</h3>
+        <p class="hint" id="camHint">กดที่กล้องเพื่อถ่ายรูป (เหลืออีก <b id="shotLeft">3</b> ครั้ง)</p>
+        <div class="cam-stage" id="camStage">
+          <div class="camera" id="camera" role="button" tabindex="0" aria-label="ถ่ายรูป">
+            <div class="c-top"><div class="c-flash"></div><div class="c-btn"></div></div>
+            <div class="c-lens"><div class="c-lens-in"></div></div><div class="c-slot"></div>
+          </div></div>`;
+      const cam = card.querySelector('#camera'), stage = card.querySelector('#camStage');
+      const spots = [
+        { tx: -100, ty: 178, rot: -7, cap: '5 เดือนแล้วนะ 🐽', pic: 'pic1.jpg', em: '🐷' },
+        { tx: 0, ty: 192, rot: 3, cap: 'คู่เรา 💖', pic: 'pic2.jpg', em: '💖' },
+        { tx: 100, ty: 178, rot: 7, cap: '🐶 + 🐷', pic: 'pic3.jpg', em: '🐶' },
+      ];
+      let shots = 0;
+      const shoot = () => {
+        if (shots >= 3) return;
+        const sp = spots[shots]; shots++;
+        sfx.shutter();
+        const fl = document.createElement('div'); fl.className = 'screen-flash'; document.body.appendChild(fl); setTimeout(() => fl.remove(), 500);
+        cam.classList.remove('flash'); void cam.offsetWidth; cam.classList.add('flash');
+        const p = document.createElement('div'); p.className = 'polaroid';
+        p.style.setProperty('--tx', sp.tx + 'px'); p.style.setProperty('--ty', sp.ty + 'px'); p.style.setProperty('--rot', sp.rot + 'deg');
+        p.style.zIndex = shots;
+        p.appendChild(imgBox(sp.pic, sp.em));
+        const c = document.createElement('div'); c.className = 'cap-t'; c.textContent = sp.cap; p.appendChild(c);
+        stage.appendChild(p);
+        const left = 3 - shots;
+        card.querySelector('#shotLeft') && (card.querySelector('#shotLeft').textContent = left);
+        if (left === 0) {
+          cam.classList.add('empty');
+          card.querySelector('#camHint').textContent = 'ถ่ายครบแล้ว! รอรูปค่อยๆ ล้างออกมานะคะ 💕';
+          unlockNext(3000);
+        }
+      };
+      cam.addEventListener('click', shoot);
+      cam.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); shoot(); } });
+      if (!CONFIG.GATE_INTERACTIVE_GIFTS) unlockNext(3000);
+    }
+  },
+  { // 3 บัตรหอมแก้ม
+    build(card){
+      card.innerHTML = `<div class="ticket kiss-card" id="kissCard"><div class="t-left">😘</div><div class="t-main">
+        <small>UNLIMITED KISS PASS</small><h3>บัตรโดนแฟนหอมแก้มแบบไม่มีลิมิต</h3>
+        <p>ใช้ได้ทุกเวลา ทุกสถานที่ ไม่จำกัดจำนวนครั้ง 💋<br><span style="font-size:12px;opacity:.8">(ลองแตะที่บัตรดูสิ)</span></p></div></div>`;
+      card.querySelector('#kissCard').addEventListener('click', e => {
+        for (let i = 0; i < 6; i++) {
+          const s = document.createElement('span'); s.className = 'conf'; s.textContent = ['💋', '💖', '😘'][i % 3];
+          s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+          s.style.setProperty('--dx', rand(-60, 60) + 'px'); s.style.setProperty('--dy', rand(-120, -40) + 'px'); s.style.setProperty('--rot', rand(-60, 60) + 'deg');
+          s.style.fontSize = '26px'; document.body.appendChild(s); setTimeout(() => s.remove(), 1800);
+        }
+      });
+    }
+  },
+  { // 4 ขอพร
+    custom: true,
+    build(card){
+      card.innerHTML = `<div class="card wish"><div style="font-size:44px">🌠</div>
+        <h3 class="title" style="font-size:24px">ขอพรวันครบรอบ</h3>
+        <p class="sub">พิมพ์คำขอพรได้เลยค่ะ แล้วจะส่งตรงถึงโนลด์ทางอีเมล 💌</p>
+        <textarea id="wishText" maxlength="600" placeholder="พิมพ์คำขอพรของอ้อนแอ้นที่นี่…"></textarea>
+        <button class="btn" id="wishSend">ส่งคำขอพร ✨</button>
+        <div class="wish-msg" id="wishMsg"></div></div>`;
+      const ta = card.querySelector('#wishText'), btn = card.querySelector('#wishSend'), msg = card.querySelector('#wishMsg');
+      btn.onclick = async () => {
+        const text = ta.value.trim();
+        if (!text) { msg.textContent = '🐷 พิมพ์คำขอพรก่อนน้า'; return; }
+        btn.disabled = true; ta.disabled = true; msg.textContent = 'กำลังส่ง… 💌';
+        const r = await sendWish(text);
+        msg.textContent = r === 'sent' ? 'ส่งคำขอพรถึงโนลด์แล้วจ้า 💖 เดี๋ยวโนลด์ช่วยทำให้เป็นจริงนะ' : 'เปิดแอปอีเมลให้แล้วนะคะ กดส่งอีกครั้งได้เลย 💌';
+        sfx.coin(); confetti(24); unlockNext(3000);
+      };
+      if (!CONFIG.GATE_INTERACTIVE_GIFTS) unlockNext(3000);
+    }
+  },
+  { // 5 จดหมาย
+    custom: true, last: true,
+    build(card){
+      card.innerHTML = `<div class="letter-scroll" id="letterBox"><h3>💌 จดหมายถึงอ้อนแอ้น 💌</h3>
+        <p>เดินทางกันมาถึงเดือนที่5แล้วน้าคู่เราา สุขสันต์วันครบรอบนะค้าบหมูอ้วนนน เค้ารักเธอมากๆเลยน้าาา</p>
+        <figure class="letter-fig" id="fig1" style="--r:-3deg"><figcaption>🐷 pic1</figcaption></figure>
+        <p>เค้ารู้ว่าเค้าอาจนะเคยทำไม่ดีกับเธอมาบ้าง เกือบทำให้ความสัมพันธ์ของเราต้องจบตั้งหลายครั้ง เค้าขอโทษที่ทำแบบนั้นนะครับ และเค้าสัญญาว่าต่อจากนี้ เค้าจะทำให้ความสัมพันธ์ของเราดี จะเป็นแฟนที่ดีของเธอ และจะทำให้เธอเป็นผู้หญิงที่โชคดีที่สุดในโลกเลยยย อยู่กับเค้าไปนานๆนะคะะ อยากมีเธอในทุกๆวันใหม่เลยนะอ้อนแอ้นน</p>
+        <p>วันครบรอบเค้าไม่ขออะไรมาก นอกจาก ขอให้เธอสุขภาพแข็งแรง เพราะเธอบ่นปวดตัวปวดขาบ่อยมากก ล่าสุดก็ปวดหัว เค้าเป็นห่วงเธอจังเลยย อยากอยู่บ้านเดียวกัน คอยทำอะไรๆให้เธอ เธอจะได้ไม่เหนื่อยซ้ำซ้อนอีกก</p>
+        <figure class="letter-fig" id="fig2" style="--r:2.5deg"><figcaption>💖 pic2</figcaption></figure>
+        <p>อยากนวดหลังนวดขาให้เธอทุกคืนเลยยย อยากให้เธอหลับแบบไม่สะดุ้งตื่นกลางดึก หลับไม่ฝันน หลับด้วยความสบายใจและนอนเต็มอิ่มในอ้อมกอดเค้า</p>
+        <figure class="letter-fig" id="fig3" style="--r:-2deg"><figcaption>🐶 pic3</figcaption></figure>
+        <p>อ้อนแอ้นขาา โนลด์รักอ้อนแอ้นมากๆเลยนะคะะ อยู่กับเค้าไปนานๆนะ อัยหมูจิ๋วคนเก่งงง🐶♥️🐷</p>
+        <p style="text-align:center;text-indent:0">— จบจดหมาย 💖 —</p></div>
+        <div class="scroll-hint" id="scrollHint">⬇️ เลื่อนอ่านจดหมายลงมาให้สุดนะคะ ⬇️</div>`;
+      [['#fig1', 'pic1.jpg', '🐷'], ['#fig2', 'pic2.jpg', '💖'], ['#fig3', 'pic3.jpg', '🐶']].forEach(([sel, src, em]) => {
+        const f = card.querySelector(sel); f.insertBefore(imgBox(src, em), f.firstChild);
+      });
+      const box = card.querySelector('#letterBox'), hint = card.querySelector('#scrollHint');
+      let done = false;
+      const check = () => {
+        if (done) return;
+        if (box.scrollTop + box.clientHeight >= box.scrollHeight - 8) {
+          done = true; hint.style.display = 'none'; unlockNext(0); sfx.coin();
+        }
+      };
+      box.addEventListener('scroll', check, { passive: true });
+      setTimeout(() => { if (box.scrollHeight <= box.clientHeight + 4) check(); }, 800);
+    }
+  },
+];
+
+async function sendWish(text){
+  const C = CONFIG, subject = '🎂 คำขอพรวันครบรอบจากอ้อนแอ้น';
+  try {
+    if (C.EMAILJS.PUBLIC_KEY && C.EMAILJS.SERVICE_ID && C.EMAILJS.TEMPLATE_ID) {
+      const r = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ service_id: C.EMAILJS.SERVICE_ID, template_id: C.EMAILJS.TEMPLATE_ID, user_id: C.EMAILJS.PUBLIC_KEY,
+          template_params: { to_email: C.EMAIL_TO, subject, message: text } })
+      });
+      if (!r.ok) throw new Error(await r.text());
+      return 'sent';
+    }
+    if (C.WEB3FORMS_ACCESS_KEY) {
+      const r = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ access_key: C.WEB3FORMS_ACCESS_KEY, subject, from_name: 'อ้อนแอ้น', message: text })
+      });
+      const j = await r.json();
+      if (!j.success) throw new Error(j.message);
+      return 'sent';
+    }
+  } catch (err) { console.error('ส่งอีเมลไม่สำเร็จ:', err); }
+  location.href = `mailto:${C.EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+  return 'mailto';
+}
+
+function showGift(i){
+  clearTimeout(nextTimer);
+  const g = gifts[i], card = $('#giftCard');
+  $('#giftNo').textContent = i + 1;
+  nextBtn.classList.remove('show');
+  nextBtn.textContent = g.last ? 'ไปหน้าสุดท้าย 🎶' : 'กลับไปหน้าตู้ ➜';
+  card.innerHTML = ''; card.style.animation = 'none'; void card.offsetWidth; card.style.animation = '';
+  g.build(card);
+  if (!g.custom) unlockNext(3000);   // ชิ้นที่ 1, 3: ปุ่มค่อยๆ โผล่หลังเปิดของขวัญ 3 วินาที
+  show('gift');
+  opened = i + 1;
+}
+nextBtn.onclick = () => {
+  if (opened >= gifts.length) {
+    const f = $('#ytFrame'); if (!f.src || f.src === 'about:blank' || !f.getAttribute('src')) f.src = f.dataset.src;
+    show('final'); confetti(50); return;
+  }
+  enterGacha();
+};
+$('#restartBtn').onclick = () => location.reload();
+</script>
+</body>
+</html>
